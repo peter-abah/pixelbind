@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/globals.css";
 import { Open_Sans } from "next/font/google";
+import NavBar from "@/components/layout/nav-bar";
 
 const openSans = Open_Sans({ subsets: ["latin"], display: "swap", variable: "--font-open-sans" });
 
@@ -17,7 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${openSans.variable}`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <NavBar />
+        {children}
+      </body>
     </html>
   );
 }
