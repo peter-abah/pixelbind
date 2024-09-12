@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${openSans.variable}`}>
-      <body className="antialiased">
+      <body className="antialiased flex flex-col h-screen overflow-auto">
         <NavBar />
         {children}
       </body>

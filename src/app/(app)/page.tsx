@@ -1,5 +1,7 @@
+import Tool from "./_components/tool";
+
 export default function Home() {
   return (
-    <div>Hello World</div>
+    <Tool />
   );
 }
