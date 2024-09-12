@@ -36,7 +36,7 @@ const transformImageFile = async (file: File): Promise<PDFImage> => {
 const transformFiles = async (images: File[]) => {
   const res: PDFImage[] = [];
 
-  for (let imgFile of images) {
+  for (const imgFile of images) {
     res.push(await transformImageFile(imgFile));
   }
 
