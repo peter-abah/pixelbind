@@ -14,7 +14,7 @@ import {
   TouchSensor,
   closestCenter,
   useSensor,
-  useSensors
+  useSensors,
 } from "@dnd-kit/core";
 import { SortableContext, arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { ImagePlus } from "lucide-react";
@@ -112,7 +112,7 @@ function Tool() {
             <ImagePlus size={32} />
             <span className="font-medium text-lg">Add more</span>
             <input
-              className="sr-only"
+              className="hidden"
               id="add-images"
               type="file"
               onChange={handleFileChange}

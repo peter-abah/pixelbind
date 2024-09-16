@@ -49,7 +49,7 @@ export const ImageCard = forwardRef<HTMLDivElement, ImageCardProps>(function Ima
           onClick={() => onRemove(image.id)}
         >
           <X className="w-4 h-4" />
-          <span className="sr-only">Remove image</span>
+          {/* <span className="sr-only">Remove image</span> */}
         </button>
       </div>
 

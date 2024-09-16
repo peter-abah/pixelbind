@@ -17,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${openSans.variable} min-h-screen`}>
-      <body className="antialiased flex flex-col h-screen overflow-y-hidden">
+    <html lang="en" className={`${openSans.variable} min-h-dvh`}>
+      <body className="antialiased flex flex-col min-h-dvh">
         <NavBar />
         {children}
       </body>
