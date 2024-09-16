@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "Pixelbind",
     description:
       "PixelBind is a simple and powerful web tool that lets you quickly convert your images into high-quality PDFs.",
-    start_url: "/",
+    start_url: "/app",
     display: "standalone",
     background_color: "#ffffff",
     theme_color: "#000000",
