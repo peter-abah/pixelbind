@@ -1,3 +1,7 @@
+"use client";
+
+import { useToast } from "@/hooks/use-toast";
+import { ACCEPTED_IMAGE_TYPES, ACCEPTED_IMAGE_TYPES_WITH_PERIOD } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { ImageUp } from "lucide-react";
 import { ChangeEvent, DragEvent, useState } from "react";
@@ -25,6 +29,7 @@ interface SelectImagesProps {
 }
 function SelectImages({ onSelect }: SelectImagesProps) {
   const [isDragOver, setIsDragOver] = useState(false);
+  const { toast } = useToast();
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
@@ -38,10 +43,18 @@ function SelectImages({ onSelect }: SelectImagesProps) {
     setIsDragOver(false);
 
     const files = Array.from(e.dataTransfer?.files || []).filter((f) =>
-      f.type.startsWith("image/")
+      ACCEPTED_IMAGE_TYPES_WITH_PERIOD.some((type) => f.type.endsWith(type))
     );
 
-    if (files.length < 1) return;
+    if (files.length < 1) {
+      const acceptedFormats =
+        ACCEPTED_IMAGE_TYPES.slice(0, -1).join(", ") + `, and ${ACCEPTED_IMAGE_TYPES.at(0)}`;
+      toast({
+        description: `Invalid file. Accepted formats are ${acceptedFormats}`,
+        variant: "destructive",
+      });
+      return;
+    }
     onSelect(files);
   };
 
@@ -73,11 +86,12 @@ function SelectImages({ onSelect }: SelectImagesProps) {
           type="file"
           onChange={handleFileChange}
           multiple
-          accept="image/*"
+          accept={ACCEPTED_IMAGE_TYPES_WITH_PERIOD.join(",")}
         />
         <ImageUp width={50} height={50} />
         <p className="text-center font-medium">
-          Drag & drop images here or click to select images.
+          Drag & drop images here or click to select images.{" "}
+          <span className="opacity-80">({ACCEPTED_IMAGE_TYPES.join(", ")})</span>
         </p>
       </label>
     </div>

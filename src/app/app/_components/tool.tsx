@@ -1,6 +1,7 @@
 "use client";
 
 import { Label } from "@/components/ui/label";
+import { ACCEPTED_IMAGE_TYPES_WITH_PERIOD } from "@/lib/constants";
 import { generatePDF } from "@/lib/jspdf";
 import { transformFiles } from "@/lib/pdfimage";
 import { PDFImage } from "@/lib/types";
@@ -117,7 +118,7 @@ function Tool() {
               type="file"
               onChange={handleFileChange}
               multiple
-              accept="image/*"
+              accept={ACCEPTED_IMAGE_TYPES_WITH_PERIOD.join(",")}
             />
           </Label>
         </div>
