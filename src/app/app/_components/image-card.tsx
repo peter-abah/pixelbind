@@ -2,7 +2,7 @@ import { PDFImage } from "@/lib/types";
 import { DraggableAttributes } from "@dnd-kit/core";
 import { SyntheticListenerMap } from "@dnd-kit/core/dist/hooks/utilities";
 import { useSortable } from "@dnd-kit/sortable";
-import { X } from "lucide-react";
+import { GripVertical, X } from "lucide-react";
 import Image from "next/image";
 import { CSSProperties, forwardRef } from "react";
 
@@ -37,11 +37,20 @@ export const ImageCard = forwardRef<HTMLDivElement, ImageCardProps>(function Ima
     <div
       ref={ref}
       className="bg-neutral-50 border rounded-md inline-block p-2 min-w-[200px] touch-manipulation"
-      {..._internal?.attributes}
-      {..._internal?.listeners}
       style={_internal?.style}
     >
-      <div className="flex justify-end">
+      <div className="flex justify-between">
+        <button
+          className="p-2 rounded-full"
+          title="Remove image"
+          type="button"
+          {..._internal?.attributes}
+          {..._internal?.listeners}
+          onClick={() => onRemove(image.id)}
+        >
+          <GripVertical className="w-4 h-4" />
+          {/* <span className="sr-only">Remove image</span> */}
+        </button>
         <button
           className="p-2 rounded-full hover:bg-neutral-200 top-0 right-0 bg-neutral-50"
           title="Remove image"
